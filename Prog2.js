@@ -1,24 +1,25 @@
-const PATTERN_HEIGHT = 5;
+const rows = [
+    [1, 4, 6, 4, 1],
+    [1, 3, 3, 1],
+    [1, 2, 1],
+    [1, 1],
+    [1]
+];
 
-for (let i = 0; i < PATTERN_HEIGHT; i++) {
-    let row = "";
+for (let i = 0; i < rows.length; i++) {
+    let line = "";
 
-    for (let space = 0; space < i; space++) {
-        row += " ";
+    for (let s = 0; s < i; s++) {
+        line += " ";
     }
 
-    let currentRow = PATTERN_HEIGHT - 1 - i;
-    let value = 1;
+    for (let j = 0; j < rows[i].length; j++) {
+        line += rows[i][j];
 
-    for (let j = 0; j <= currentRow; j++) {
-        row += value;
-
-        if (j < currentRow) {
-            row += " ";
+        if (j < rows[i].length - 1) {
+            line += " ";
         }
-
-        value = value * (currentRow - j) / (j + 1);
     }
 
-    console.log(row);
+    console.log(line);
 }
