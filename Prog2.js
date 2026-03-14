@@ -1,20 +1,27 @@
-let n = 5;
+let rows = 5;
 
-for (let i = 0; i < n; i++) {
+for (let i = 0; i < rows; i++) {
+    let ans = "";
 
-    let row = "";
-
-  
     for (let s = 0; s < i; s++) {
-        row += " ";
+        ans += " ";
     }
 
-  
-    let num = 1;
-    for (let j = 0; j < n - i; j++) {
-        row += num + " " ;
-        num = num * (n - i - 1 - j) / (j + 1);
+    let count = rows - i;
+
+    for (let j = 0; j < count; j++) {
+        let num = 1;
+
+        for (let k = 0; k < j; k++) {
+            num = num * (count - 1 - k) / (k + 1);
+        }
+
+        ans += num;
+
+        if (j != count - 1) {
+            ans += " ";
+        }
     }
 
-    console.log(row);
+    console.log(ans);
 }
