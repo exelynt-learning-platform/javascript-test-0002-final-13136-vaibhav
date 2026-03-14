@@ -1,27 +1,24 @@
-let rows = 5;
+const PATTERN_HEIGHT = 5;
 
-for (let i = 0; i < rows; i++) {
-    let ans = "";
+for (let i = 0; i < PATTERN_HEIGHT; i++) {
+    let row = "";
 
-    for (let s = 0; s < i; s++) {
-        ans += " ";
+    for (let space = 0; space < i; space++) {
+        row += " ";
     }
 
-    let count = rows - i;
+    let currentRow = PATTERN_HEIGHT - 1 - i;
+    let value = 1;
 
-    for (let j = 0; j < count; j++) {
-        let num = 1;
+    for (let j = 0; j <= currentRow; j++) {
+        row += value;
 
-        for (let k = 0; k < j; k++) {
-            num = num * (count - 1 - k) / (k + 1);
+        if (j < currentRow) {
+            row += " ";
         }
 
-        ans += num;
-
-        if (j != count - 1) {
-            ans += " ";
-        }
+        value = value * (currentRow - j) / (j + 1);
     }
 
-    console.log(ans);
+    console.log(row);
 }
